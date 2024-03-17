@@ -41,7 +41,7 @@ li {
 
     <h1>Metal Bands</h1>
   <div class="container">
-    <ul id="bandList"></ul>
+    <ul id="band"></ul>
   </div>
 
 
@@ -76,7 +76,7 @@ bands.sort((name1,name2)=>{
 // console.log(bands);
 
 
-const ul = document.getElementById("bandList");
+const ul = document.getElementById("band");
 
 bands.forEach(name=>{
     const liEle = document.createElement("li");
