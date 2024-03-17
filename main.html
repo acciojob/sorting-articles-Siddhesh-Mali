@@ -1,16 +1,87 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metal Bands</title>
+  <link rel="stylesheet" href="style.css"> 
+  <style>
+    body {
+  font-family: sans-serif;
+  margin: 0; /* Remove default body margin */
+}
+
+.container {
+  background-color: #f0f0f0; /* Light gray background */
+  padding: 5% 15%; /* Add some padding inside the container */
+  max-width: 800px; /* Set a maximum width for responsiveness */
+  margin: 0 15%; /* Center the container horizontally */
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+  </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
 
-</body>
+    <h1>Metal Bands</h1>
+  <div class="container">
+    <ul id="bandList"></ul>
+  </div>
 
+
+  <script>
+    const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+// console.log(bands);
+
+function replaceArticles(str){
+
+    let newstr = str +" ";
+    const arts = ["The ","An ","A "];
+    for(let articles of arts  ){
+        newstr = newstr.replaceAll(articles,"").trim()
+    }
+    return newstr.trim();
+}
+bands.sort((name1,name2)=>{
+    if(replaceArticles(name1) > replaceArticles(name2) ) {
+        return 1;
+    }
+    if(replaceArticles(name1) < replaceArticles(name2) ) {
+        return -1;
+    }
+    if(replaceArticles(name1) == replaceArticles(name2) ) {
+        return 0;
+    }
+});
+
+// bands.sort((name1,name2)=>{
+//     replaceArticles(name1)>replaceArticles(name2)? 1:-1;
+// })
+// console.log(bands);
+
+
+const ul = document.getElementById("bandList");
+
+bands.forEach(name=>{
+    const liEle = document.createElement("li");
+    liEle.innerHTML = `${name}`;
+    ul.appendChild(liEle)
+})
+  </script> </body>
 </html>
